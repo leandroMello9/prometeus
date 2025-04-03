@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s #Frequência de coleta dos dados nos endpoints.
+  scrape_timeout: 5s #O tempo maximo para indiciar que api esta fora do ar.
+  evaluation_interval: 15s #Em x em x tempo irei pegar os dados e manipular para uso de alertas por exemplo.
+scrape_configs: #Processo de coleta das metricas.
+- job_name: 'prometheus'
+  static_configs:
+  - targets:
+    - localhost:9090
+- job_name: 'api'
+  scrape_interval: 5s
+  scrape_timeout: 2s
+  static_configs:
+  - targets:
+    - api:80
+    labels:
+      version: 1.0
