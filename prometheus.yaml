@@ -15,3 +15,12 @@ scrape_configs: #Processo de coleta das metricas.
     - api:80
     labels:
       version: 1.0
+- job_name: 'mongodb_exporter'
+  scrape_interval: 5s
+  scrape_timeout: 2s
+  static_configs:
+  - targets:
+    - mongoexporter:9216
+    labels:
+      version: 1.0
+      database: mongodb
